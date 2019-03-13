@@ -9,7 +9,7 @@ namespace RinkuSystem.Clases
 {
     public class CCompartido : CConexion
     {
-        protected string sMessage;
+        protected string sMensaje;
         protected CRespuesta Respuesta;
         protected DataSet datos;
         protected XDocument xml;
@@ -17,7 +17,7 @@ namespace RinkuSystem.Clases
 
         public CCompartido()
         {
-            this.sMessage = string.Empty;
+            this.sMensaje = string.Empty;
             this.Respuesta = new CRespuesta();
             this.datos = new DataSet();
             this.xml = new XDocument();
@@ -27,7 +27,7 @@ namespace RinkuSystem.Clases
         public CCompartido(DataBase database)
             : base(database)
         {
-            this.sMessage = string.Empty;
+            this.sMensaje = string.Empty;
             this.Respuesta = new CRespuesta();
             this.datos = new DataSet();
             this.xml = new XDocument();
