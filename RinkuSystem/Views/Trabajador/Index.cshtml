@@ -12,7 +12,7 @@
 <div class="container">
     <div class="page-header">
         <h1 id="title-page-content">
-            Catalogo de Trabajadores
+            Catálogo de Trabajadores
             <span id="optional-message-page-content">
                 <small>
                     <i class="icon-double-angle-right"></i>
@@ -26,7 +26,7 @@
                 <div class="form-group">
                     <label id="lblNumEmpleado" class="col-sm-2 control-label no-padding-right">Num. Empleado: </label>
                     <div class="input-group col-md-2 col-xs-12">
-                        <input type="text" id="txtNumeroEmpleado" class="form-control num" maxlength="9" />
+                        <input type="text" id="txtNumeroEmpleado" class="form-control num" maxlength="9" disabled/>
                         <span class="input-group-btn">
                             <button class="btn btn-primary btn-sm control" id="btnBuscarEmpleado">
                                 <i class="icon-search bigger-110"></i>
@@ -43,25 +43,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1">Rol</label>
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1">Rol:</label>
                     <div class="col-md-4 col-xs-12">
                         <select id="slcRoles" class="form-control"></select>
                     </div>
                 </div> 
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1">Tipo</label>
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1">Tipo:</label>
                     <div class="col-md-4 col-xs-12">
                         <select id="slcTipo" class="form-control"></select>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-offset-1 col-md-7" id="div-grid-Trabajadores">
-                            <table id="grid-Trabajadores"></table>
-                            <div id="pager-Trabajadores"></div>
-                        </div>
+                <div class="row hide" id="div-grid-Trabajadores">
+                    <div class="col-md-12">
+                        <table id="grid-Trabajadores"></table>
+                        <div id="pager-Trabajadores"></div>
                     </div>
                 </div>
 
@@ -82,11 +80,11 @@
 
             <div class="form-group buttonsClass">
                 <div class="col-md-offset-2 col-md-9">
-                    <button class="btn btn-sm btn-primary" id="btnSave">
+                    <button class="btn btn-sm btn-primary" id="btnGuardar">
                         <i class="icon-save bigger-110"></i>
                         <span>Guardar</span>
                     </button>
-                    <button class="btn btn-sm btn-grey" id="btnClear">
+                    <button class="btn btn-sm btn-grey" id="btnLimpiar">
                         <i class="icon-eraser bigger-110"></i>
                         <span>Limpiar</span>
                     </button>

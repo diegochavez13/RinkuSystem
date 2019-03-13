@@ -29,7 +29,7 @@ function iniPantalla() {
                 });
                 break;
             case NO_DATOS:
-                alert("NO DATOS");
+                toast("Notificación", "No se encontraron funcionalidades", "orange", 3000, LIGHT, RIGHT);
                 break;
         }
     });
