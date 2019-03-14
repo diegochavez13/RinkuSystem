@@ -50,11 +50,22 @@ function obtenerTrabajador()
     connection.invoke("Trabajador", "obtenerTrabajador", objDatos, function (Respuesta) {
         switch (Respuesta.shStatus) {
             case OK_:
-                var objTrabajador = Respuesta.data;
-                $("#txtNumeroEmpleado").val(objTrabajador[0].iID);
-                $("#txtNombre").val(objTrabajador[0].nvNombre);
-                $("#txtRol").val(objTrabajador[0].nvRol);
-                $("#txtTipo").val(objTrabajador[0].nvTipo);
+                    var objTrabajador = Respuesta.data;
+                    $("#txtNumeroEmpleado").val(objTrabajador[0].iID);
+                    $("#txtNombre").val(objTrabajador[0].nvNombre);
+                    $("#txtRol").val(objTrabajador[0].nvRol);
+                    $("#txtTipo").val(objTrabajador[0].nvTipo);
+
+                    if (objTrabajador[0].iRol == 3)
+                    {
+                        $("#chkCubrioTurno").prop("disabled", false);
+                        $("#txtRolhidden").val(objTrabajador[0].iRol);
+                    }
+                    else
+                    {
+                        $("#chkCubrioTurno").prop("disabled", true);
+                        $("#txtRolhidden").val("");
+                    }
                 break;
             case NO_FOUND_RECORDS_:
                 toast("Notificación", "No se encontraron datos con ese Número de empleado", "orange", 3000, LIGHT, RIGHT);
@@ -84,7 +95,6 @@ function guardarMovimientoTrabajador()
         daFecha:  $("#txtFechaCaptura").val(),
         bCubrioTurno: $("#chkCubrioTurno").is(':checked')
     }
-    console.log(objDatos);
 
     connection.invoke("CapturaMovimientos", "guardarMovimientoTrabajador", objDatos, function (Respuesta) {
         switch (Respuesta.shStatus) {
@@ -125,6 +135,13 @@ function validarCampos() {
         return;
     }
 
+    var validarCheck = $("#chkCubrioTurno").is(':checked');
+
+    if ($("#txtRolhidden").val() != 3 && validarCheck) {
+        toast("Notificación", "No se puede cubrir turno por el Rol que tiene el empleado", "orange", 3000, LIGHT, RIGHT);
+        return;
+    }
+
     return bBandera = true;
 }
 
@@ -162,6 +179,11 @@ function initGridTrabajadores() {
             $("#txtNombre").val(row.nvNombre);
             $("#txtRol").val(row.nvRol);
             $("#txtTipo").val(row.nvTipo);
+
+            if (row.iRol == 3)
+                $("#chkCubrioTurno").prop("disabled", false);
+            else
+                $("#chkCubrioTurno").prop("disabled", true);
 
             $(this).closest('.ui-dialog-content').dialog('close');
         },
