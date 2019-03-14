@@ -82,7 +82,6 @@ namespace RinkuSystem.Controllers
             try
             {
                 Respuesta = mdlTrabajador.guardarTrabajador(args);
-                Respuesta.shStatus = (int)Definitions.OK_;
             }
             catch(Exception Ex)
             {
@@ -91,5 +90,42 @@ namespace RinkuSystem.Controllers
 
             return Json(Respuesta, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public ActionResult obtenerTrabajador(int idTrabajador )
+        {
+            CRespuesta Respuesta = new CRespuesta();
+            MdlTrabajador mdlTrabajador = new MdlTrabajador();
+
+            try
+            {
+                Respuesta = mdlTrabajador.obtenerTrabajador(idTrabajador);
+            }
+            catch (Exception Ex)
+            {
+                Respuesta.sDescription = Ex.Message;
+            }
+
+            return Json(Respuesta, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult ObtenerDatosTrabajadores()
+        {
+            CRespuesta Respuesta = new CRespuesta();
+            MdlTrabajador mdlTrabajador = new MdlTrabajador();
+
+            try
+            {
+                Respuesta = mdlTrabajador.ObtenerDatosTrabajadores();
+            }
+            catch (Exception Ex)
+            {
+                Respuesta.sDescription = Ex.Message;
+            }
+
+            return Json(Respuesta, JsonRequestBehavior.AllowGet);
+        }
+        
 	}
 }

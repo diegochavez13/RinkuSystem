@@ -139,5 +139,81 @@ namespace RinkuSystem.Models
             }
             return oRes;
         }
+
+        public CRespuesta obtenerTrabajador(int idTrabajador)
+        {
+            CRespuesta oRes = new CRespuesta();
+
+            this.args.Add(new SqlArgumentos("idTrabajador", idTrabajador, SqlDbType.Int));
+
+            if (ejecutarStoreProcedure(ref datos, "ObtenerDatosTrabajador", args, ref sMensaje))
+            {
+                if (datos.Tables[0].Rows.Count > 0)
+                {
+                    var Result = (from row in datos.Tables[0].AsEnumerable()
+                                  select new
+                                  {
+                                      iID = row.Field<int>("iID"),
+                                      nvNombre = row.Field<string>("nvNombre"),
+                                      iRol = row.Field<int>("iRol"),
+                                      nvRol = row.Field<string>("nvRol"),
+                                      iTipo = row.Field<int>("iTipo"),
+                                      nvTipo = row.Field<string>("nvTipo"),
+                                      iEstatus = row.Field<bool>("iEstatus"),
+                                      nvEstatus = row.Field<string>("nvEstatus")
+                                  }).ToList();
+
+                    oRes.data = Result;
+                    oRes.shStatus = (short)Definitions.OK_;
+                }
+                else
+                {
+                    oRes.shStatus = (short)Definitions.NO_DATOS;
+                }
+            }
+            else
+            {
+                oRes.sDescription = this.sMensaje;
+            }
+
+            return oRes;
+        }
+
+        public CRespuesta ObtenerDatosTrabajadores()
+        {
+            CRespuesta oRes = new CRespuesta();
+
+            if (ejecutarStoreProcedure(ref datos, "ObtenerDatosTrabajadores", new List<SqlArgumentos>(), ref sMensaje))
+            {
+                if (datos.Tables[0].Rows.Count > 0)
+                {
+                    var Result = (from row in datos.Tables[0].AsEnumerable()
+                                  select new
+                                  {
+                                      iID = row.Field<int>("iID"),
+                                      nvNombre = row.Field<string>("nvNombre"),
+                                      iRol = row.Field<int>("iRol"),
+                                      nvRol = row.Field<string>("nvRol"),
+                                      iTipo = row.Field<int>("iTipo"),
+                                      nvTipo = row.Field<string>("nvTipo"),
+                                      iEstatus = row.Field<bool>("iEstatus"),
+                                      nvEstatus = row.Field<string>("nvEstatus")
+                                  }).ToList();
+
+                    oRes.data = Result;
+                    oRes.shStatus = (short)Definitions.OK_;
+                }
+                else
+                {
+                    oRes.shStatus = (short)Definitions.NO_DATOS;
+                }
+            }
+            else
+            {
+                oRes.sDescription = this.sMensaje;
+            }
+
+            return oRes;
+        }
     }
 }

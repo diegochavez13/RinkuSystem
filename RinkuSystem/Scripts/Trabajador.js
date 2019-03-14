@@ -142,7 +142,6 @@ function initGridTrabajadores() {
         },
         ondblClickRow: function (rowid) {
             row = $(this).getRowData(rowid);
-            console.log(row);
 
             $("#txtNumeroEmpleado").val(row.iID);
             $("#txtNombre").val(row.nvNombre);

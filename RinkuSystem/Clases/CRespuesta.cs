@@ -26,6 +26,6 @@ namespace RinkuSystem.Clases
         OK_ = 1,
         DEFAULT_ = 0,
         ERR_ = -1,
-        NO_DATOS = 2
+        NO_DATOS = -3
     }
 }

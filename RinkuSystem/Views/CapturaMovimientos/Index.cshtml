@@ -1,0 +1,105 @@
+﻿<script src="@Url.Content("~/Scripts/CapturaMovimientos.js")" type="text/javascript"></script>
+
+<style>
+    .ui-autocomplete {
+        max-height: 175px;
+        overflow-y: auto;
+        /* prevent horizontal scrollbar */
+        /*overflow-x: hidden;*/
+    }
+</style>
+
+<div class="container">
+    <div class="page-header">
+        <h1 id="title-page-content">
+            Captura de Movimientos
+            <span id="optional-message-page-content">
+                <small>
+                    <i class="icon-double-angle-right"></i>
+                </small>
+            </span>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label id="lblNumEmpleado" class="col-sm-2 control-label no-padding-right">Num. Empleado: </label>
+                    <div class="input-group col-md-2 col-xs-12">
+                        <input type="text" id="txtNumeroEmpleado" class="form-control num" maxlength="9" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary btn-sm control" id="btnBuscarEmpleado">
+                                <i class="icon-search bigger-110"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label id="lblNombre" class="col-sm-2 control-label no-padding-right letters" for="form-field-1">Nombre:</label>
+                    <div class="input-group col-md-5 col-xs-12">
+                        <input type="text" id="txtNombre" class="form-control" maxlength="150" disabled/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1">Rol:</label>
+                    <div class="col-md-2 col-xs-12">
+                        <input type="text" id="txtRol" class="form-control" maxlength="150" disabled />
+                    </div>
+                    <label class="col-sm-1 control-label no-padding-right" for="form-field-1">Tipo:</label>
+                    <div class="col-md-2 col-xs-12">
+                        <input type="text" id="txtTipo" class="form-control" maxlength="150" disabled />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label id="lblFechaCaptura" class="col-md-2 control-label no-padding-right">Fecha:</label>
+                    <div class="input-group col-md-2 col-xs-12 daCreation">
+                        <input id="txtFechaCaptura" class="form-control" type="text" readonly />
+                        <span class="input-group-btn">
+                            <button class="btn btn-sm btn-primary" id="btnCalendario">
+                                <i class="icon-calendar bigger-110"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="lblCantidadEntregas" class="col-sm-2 control-label no-padding-right">Cantidad de Entregas </label>
+                    <div class="input-group col-md-2 col-xs-12">
+                        <input type="text" id="txtCantidadEntregas" class="form-control num" maxlength="3" />
+                    </div>
+                    <div class="col-ms-3 col-sm-3 col-xs-5">
+                        <label>
+                            <input type="checkbox" class="ace" id="chkCubrioTurno" />
+                            <span class="lbl"> Cubrió Turno</span>
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="row hide" id="div-grid-Trabajadores">
+                    <div class="col-md-12">
+                        <table id="grid-Trabajadores"></table>
+                        <div id="pager-Trabajadores"></div>
+                    </div>
+                </div>
+                <!--Botones-->
+
+                <div class="form-group buttonsClass">
+                    <div class="col-md-offset-2 col-md-9">
+                        <button class="btn btn-sm btn-primary" id="btnGuardar">
+                            <i class="icon-save bigger-110"></i>
+                            <span>Guardar</span>
+                        </button>
+                        <button class="btn btn-sm btn-grey" id="btnCancelar">
+                            <i class="icon-remove bigger-110"></i>
+                            <span>Cancelar</span>
+                        </button>
+                    </div>
+                </div>
+            </div><!--end form-horizontal-->
+        </div><!--end col-xs-12-->
+    </div><!--end row-->
+</div><!--end container-->

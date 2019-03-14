@@ -539,6 +539,7 @@
     <Content Include="Content\icon-logo\fonts\icomoon.eot" />
     <Content Include="Content\icon-logo\fonts\icomoon.ttf" />
     <Content Include="Content\icon-logo\fonts\icomoon.woff" />
+    <Content Include="Scripts\CapturaMovimientos.js" />
     <Content Include="Scripts\General\CustomTags.js" />
     <Content Include="Scripts\General\functions.js" />
     <Content Include="Scripts\General\keypress.js" />
@@ -556,6 +557,7 @@
     <Compile Include="Clases\CFuncionalidades.cs" />
     <Compile Include="Clases\CMenu.cs" />
     <Compile Include="Clases\CTrabajador.cs" />
+    <Compile Include="Controllers\CapturaMovimientosController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\TrabajadorController.cs" />
     <Compile Include="Global.asax.cs">
@@ -564,6 +566,7 @@
     <Compile Include="Clases\CCompartido.cs" />
     <Compile Include="Clases\CConexion.cs" />
     <Compile Include="Clases\CRespuesta.cs" />
+    <Compile Include="Models\MdlCapturaMovimientos.cs" />
     <Compile Include="Models\MdlMenu.cs" />
     <Compile Include="Models\MdlTrabajador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -573,6 +576,7 @@
     <Content Include="packages.config" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Trabajador\Index.cshtml" />
+    <Content Include="Views\CapturaMovimientos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
