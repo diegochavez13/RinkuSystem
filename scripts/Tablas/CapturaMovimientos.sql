@@ -4,6 +4,7 @@ CREATE TABLE CapturaMovimientos(
 				daFechaCaptura DateTime,
 				iEntregas Int,
 				btCubrioTurno bit,
+				iRolCubierto Int,
 				btPagoMovimiento bit,
 				CONSTRAINT FK_CapturaMovimientos_CatTrabajador FOREIGN KEY (iIdTrabajador)
 				REFERENCES CatTrabajador(iID)

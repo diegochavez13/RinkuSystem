@@ -20,14 +20,14 @@ namespace RinkuSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult guardarMovimientoTrabajador(int iIdTrabajador, int iEntregas, DateTime daFecha, bool bCubrioTurno)
+        public ActionResult guardarMovimientoTrabajador(int iIdTrabajador, int iEntregas, DateTime daFecha, bool bCubrioTurno, int iRolCubierto)
         {
             CRespuesta Respuesta = new CRespuesta();
             MdlCapturaMovimientos mdlCapturaMovimientos = new MdlCapturaMovimientos();
           
             try
             {
-                Respuesta = mdlCapturaMovimientos.guardarMovimientoTrabajador(iIdTrabajador, iEntregas, daFecha, bCubrioTurno);
+                Respuesta = mdlCapturaMovimientos.guardarMovimientoTrabajador(iIdTrabajador, iEntregas, daFecha, bCubrioTurno, iRolCubierto);
             }
             catch (Exception Ex)
             {

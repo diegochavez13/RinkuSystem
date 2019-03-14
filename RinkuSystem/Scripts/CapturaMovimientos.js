@@ -5,6 +5,7 @@ $(document).ready(function () {
 
 function iniPantalla()
 {
+    $("#divRolCubierto").hide();
     Numerics("num", false, false);
     $("#txtNumeroEmpleado").focus();
     $("#txtFechaCaptura").datepicker({
@@ -38,8 +39,24 @@ function iniPantalla()
         }
     });
 
+    $("#chkCubrioTurno").change(function () {
+        var validarCheck = $("#chkCubrioTurno").is(':checked');
+        if (validarCheck)
+        {
+            
+            $("#divRolCubierto").show(200);
+            
+        }
+        else
+        {
+            $("#divRolCubierto").hide(200);
+            $("#slcRoles").val(0);
+        }
+    });
+
     initGridTrabajadores();
     obtenerTrabajadores();
+    obtenerRoles();
 }
 
 function obtenerTrabajador()
@@ -87,13 +104,34 @@ function obtenerTrabajadores() {
     });
 }
 
+function obtenerRoles() {
+    connection.invoke('Trabajador', 'obtenerRoles', {}, function (Respuesta) {
+        switch (Respuesta.shStatus) {
+            case OK_:
+                var sHtml = "<option value = '0' selected>Seleccione un Rol</option>";
+                for (var i = 0 ; i < Respuesta.data.length ; i++) {
+                    sHtml += "<option value='" + Respuesta.data[i].iID + "'>" + Respuesta.data[i].nvRol + "</option>"
+                }
+
+                $("#slcRoles").html(sHtml);
+                $("#slcRoles option[value='3']").remove();
+                break;
+            case NO_DATOS:
+                toast("Notificación", "No se encontraron datos de Roles", "orange", 3000, LIGHT, RIGHT);
+                break;
+        }
+    });
+}
+
 function guardarMovimientoTrabajador()
 {
     var objDatos = {
         iIdTrabajador: $("#txtNumeroEmpleado").val(),
         iEntregas: $("#txtCantidadEntregas").val(),
         daFecha:  $("#txtFechaCaptura").val(),
-        bCubrioTurno: $("#chkCubrioTurno").is(':checked')
+        bCubrioTurno: $("#chkCubrioTurno").is(':checked'),
+        iRolCubierto: $("#slcRoles").val()
+
     }
 
     connection.invoke("CapturaMovimientos", "guardarMovimientoTrabajador", objDatos, function (Respuesta) {
@@ -139,6 +177,11 @@ function validarCampos() {
 
     if ($("#txtRolhidden").val() != 3 && validarCheck) {
         toast("Notificación", "No se puede cubrir turno por el Rol que tiene el empleado", "orange", 3000, LIGHT, RIGHT);
+        return;
+    }
+
+    if ($("#txtRolhidden").val() == 3 && validarCheck && $("#slcRoles").val() == 0) {
+        toast("Notificación", "Favor de seleccionar el Rol que se cubrió", "orange", 3000, LIGHT, RIGHT);
         return;
     }
 
@@ -206,6 +249,8 @@ function limiarCampos() {
     $("#chkCubrioTurno").prop('checked', false);
     $("#txtCantidadEntregas").val("");
     $("#txtFechaCaptura").val("");
+    $("#slcRoles").val(0);
+    $("#divRolCubierto").hide(200);
 
     $("#txtNumeroEmpleado").focus();
 }

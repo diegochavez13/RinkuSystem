@@ -5,7 +5,8 @@ Create Procedure guardarMovimientoTrabajador
 		@iEntregas Int,
 		@bCubrioTurno bit,
 		@iIdTrabajador Int,
-		@daFecha Date
+		@daFecha Date,
+		@iRolCubierto Int
 As
 Begin		
 	IF Exists (Select * From CapturaMovimientos Where iIdTrabajador = @iIdTrabajador 
@@ -22,12 +23,12 @@ Begin
 				And Cast(daFechaCaptura as Date) = Cast(@daFecha as Date)
 				And btPagoMovimiento = 1) > 0
 	Begin
-		Insert Into CapturaMovimientos(iIdTrabajador,daFechaCaptura,iEntregas,btCubrioTurno,btPagoMovimiento)
-		Values(@iIdTrabajador,@daFecha,@iEntregas,@bCubrioTurno,0)
+		Insert Into CapturaMovimientos(iIdTrabajador,daFechaCaptura,iEntregas,btCubrioTurno,iRolCubierto,btPagoMovimiento)
+		Values(@iIdTrabajador,@daFecha,@iEntregas,@bCubrioTurno,@iRolCubierto,0)
 	End
 	ELSE
 	Begin
-		Insert Into CapturaMovimientos(iIdTrabajador,daFechaCaptura,iEntregas,btCubrioTurno,btPagoMovimiento)
-		Values(@iIdTrabajador,@daFecha,@iEntregas,@bCubrioTurno,0)	
+		Insert Into CapturaMovimientos(iIdTrabajador,daFechaCaptura,iEntregas,btCubrioTurno,iRolCubierto,btPagoMovimiento)
+		Values(@iIdTrabajador,@daFecha,@iEntregas,@bCubrioTurno,@iRolCubierto,0)	
 	End
 End

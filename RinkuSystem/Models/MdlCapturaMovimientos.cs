@@ -14,7 +14,7 @@ namespace RinkuSystem.Models
 {
     public class MdlCapturaMovimientos : CCompartido
     {
-        public CRespuesta guardarMovimientoTrabajador(int iIdTrabajador, int iEntregas, DateTime daFecha, bool bCubrioTurno)
+        public CRespuesta guardarMovimientoTrabajador(int iIdTrabajador, int iEntregas, DateTime daFecha, bool bCubrioTurno, int iRolCubierto)
         {
             CRespuesta oRes = new CRespuesta();
 
@@ -22,6 +22,7 @@ namespace RinkuSystem.Models
             this.args.Add(new SqlArgumentos("iEntregas", iEntregas, SqlDbType.Int));
             this.args.Add(new SqlArgumentos("daFecha", daFecha, SqlDbType.DateTime));
             this.args.Add(new SqlArgumentos("bCubrioTurno", bCubrioTurno, SqlDbType.Bit));
+            this.args.Add(new SqlArgumentos("iRolCubierto", iRolCubierto, SqlDbType.Int));
 
             if (ejecutarStoreProcedure(ref datos, "guardarMovimientoTrabajador", args, ref sMensaje))
             {
