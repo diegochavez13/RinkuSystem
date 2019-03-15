@@ -547,6 +547,7 @@
     <Content Include="Scripts\General\utilities.js" />
     <Content Include="Scripts\General\utils.js" />
     <Content Include="Scripts\Menu.js" />
+    <Content Include="Scripts\PagosNomina.js" />
     <Content Include="Scripts\Trabajador.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -556,9 +557,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Clases\CFuncionalidades.cs" />
     <Compile Include="Clases\CMenu.cs" />
+    <Compile Include="Clases\CPagos.cs" />
     <Compile Include="Clases\CTrabajador.cs" />
     <Compile Include="Controllers\CapturaMovimientosController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\PagosNominaController.cs" />
     <Compile Include="Controllers\TrabajadorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -568,6 +571,7 @@
     <Compile Include="Clases\CRespuesta.cs" />
     <Compile Include="Models\MdlCapturaMovimientos.cs" />
     <Compile Include="Models\MdlMenu.cs" />
+    <Compile Include="Models\MdlPagosNomina.cs" />
     <Compile Include="Models\MdlTrabajador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -577,6 +581,7 @@
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Trabajador\Index.cshtml" />
     <Content Include="Views\CapturaMovimientos\Index.cshtml" />
+    <Content Include="Views\PagosNomina\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

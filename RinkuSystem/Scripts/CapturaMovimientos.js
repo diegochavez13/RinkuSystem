@@ -20,7 +20,7 @@ function iniPantalla()
     });
 
     $("#btnCancelar").click(function () {
-        limiarCampos();
+        limpiarCampos();
     });
 
     $("#txtNumeroEmpleado").keyup(function (e) {
@@ -138,7 +138,7 @@ function guardarMovimientoTrabajador()
         switch (Respuesta.shStatus) {
             case OK_:
                 toast("Notificación", "Se guardo correctamente la captura de movimiento", "green", 3000, LIGHT, RIGHT);
-                limiarCampos();
+                limpiarCampos();
                 break;
             default:
                 break;
@@ -241,7 +241,7 @@ function mostrarGridTrabajadores(data) {
     dialogRegular2("div-grid-Trabajadores", "Trabajadores", 'auto', 'auto');
 }
 
-function limiarCampos() {
+function limpiarCampos() {
     $("#txtNumeroEmpleado").val("");
     $("#txtNombre").val("");
     $("#txtRol").val("");

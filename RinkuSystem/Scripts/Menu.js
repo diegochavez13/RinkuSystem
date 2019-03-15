@@ -56,7 +56,6 @@ function createSideMenu(Respuesta) {
         sHtml += "</ul>" +
              "</li>";
     }
-    //$("#customNavList").html(sHtml).show(1000, "linear");
     $("#customNavList").html(sHtml).show(400);
 }
 
@@ -64,11 +63,10 @@ function getView(urlView, unFunctionalityId) {
     $.ajax({
         type: "post",
         url: urlView,
-        async: true,//Important
+        async: true,
         dataType: "html",
         success: function (response) {
             $ruleFunctionsByProfile(unFunctionalityId, $(response));
-            //moveScrollTop();
             unblockUI();
         },
         beforeSend: function () {
@@ -77,9 +75,6 @@ function getView(urlView, unFunctionalityId) {
         },
         error: function (xhr, status, err) {
             unblockUI();
-            /* if (err == 'Not Found') {
-                 LoadPageNoFound();
-             }*/
         }
     });
 }

@@ -20,7 +20,7 @@ function iniPantalla() {
     });
     
     $("#btnLimpiar").click(function () {
-        limiarCampos();
+        limpiarCampos();
     });
 
     initGridTrabajadores();
@@ -104,7 +104,7 @@ function guardarTrabajador()
         switch (Respuesta.shStatus) {
             case OK_:
                 toast("Notificación", "Se guardo correctamente al trabajador", "green", 3000, LIGHT, RIGHT);
-                limiarCampos();
+                limpiarCampos();
                 break;
             case NO_DATOS:
                 toast("Notificación", "No se encontraron datos de Roles", "orange", 3000, LIGHT, RIGHT);
@@ -178,7 +178,7 @@ function mostrarGridTrabajadores(data) {
     dialogRegular2("div-grid-Trabajadores", "Trabajadores", 'auto', 'auto');
 }
 
-function limiarCampos()
+function limpiarCampos()
 {
     $("#txtNumeroEmpleado").val("");
     $("#txtNombre").val("");
